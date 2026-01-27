@@ -1,0 +1,719 @@
+/* ==========================================================================
+   🎨 O SEU ESTILO (Design Tokens)
+   Aqui você controla as cores e o visual do site inteiro em um só lugar.
+   ========================================================================== */
+
+:root {
+  /* -- CORES PRINCIPAIS -- */
+  --bg: #0b0f14;       /* Fundo bem escuro (quase preto) */
+  --bg2: #0f1620;      /* Fundo secundário (para degradês) */
+
+  /* -- DESTAQUE (A cor da sua marca) -- */
+  /* Dica: Mude este código hexadecimal (#1e90ff) para a cor da sua barbearia */
+  --accent: #1e90ff;   
+  --accent2: #39c6ff;  /* Uma versão mais clara para brilhos */
+
+  /* -- MATERIAIS (Efeito de vidro) -- */
+  --surface: rgba(255,255,255,.03);   /* Vidro bem transparente */
+  --surface-2: rgba(255,255,255,.04); /* Vidro um pouco mais visível */
+  --card: rgba(255,255,255,.06);      /* Fundo dos cartões */
+  --border: rgba(255,255,255,.10);    /* Bordas sutis */
+
+  /* -- TEXTO -- */
+  --text: rgba(255,255,255,.90);      /* Branco não muito estourado (confortável) */
+  --muted: rgba(255,255,255,.70);     /* Cinza claro para textos secundários */
+
+  /* -- CONFIGURAÇÕES GERAIS -- */
+  --container: 1120px; /* Largura máxima do conteúdo */
+  
+  --radius: 18px;      /* Arredondamento dos cantos (cards normais) */
+  --radius2: 26px;     /* Arredondamento maior (seções grandes) */
+
+  --shadow: 0 18px 60px rgba(0,0,0,.45); /* Sombra suave */
+
+  /* -- ANIMAÇÕES -- */
+  --ease: ease;
+  --t-fast: .12s;      /* Movimento rápido */
+  --t-med: .25s;       /* Movimento médio */
+
+  --focus: rgba(57,198,255,.35); /* Cor do contorno ao usar Tab no teclado */
+
+  color-scheme: dark; /* Avisa ao navegador que o tema é escuro */
+}
+
+/* ==========================================================================
+   🛠️ O BÁSICO (Reset)
+   Zerando configurações chatas dos navegadores para começar limpo.
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Garante que as bordas não aumentem o tamanho dos elementos */
+}
+
+html {
+  scroll-behavior: smooth; /* Faz a rolagem ser suave ao clicar nos links */
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif; /* Fonte moderna e limpa */
+  color: var(--text);
+  
+  /* Esse fundo cria aquele efeito de luzes "spotlight" no topo */
+  background:
+    radial-gradient(1000px 600px at 20% 0%, rgba(30,144,255,.22), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, rgba(57,198,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+img {
+  max-width: 100%; /* Impede imagens de estourarem a tela */
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none; /* Remove o sublinhado padrão feio */
+}
+
+/* Acessibilidade: destaque quando navega pelo teclado */
+:where(a, button):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 14px;
+}
+
+/* ==========================================================================
+   📐 ESTRUTURA (Layout)
+   ========================================================================== */
+
+/* Mantém o conteúdo centralizado e não deixa ficar muito largo em telas grandes */
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+/* Atalho para criar grades (grids) rapidamente */
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+/* Botão invisível para leitores de tela (Acessibilidade) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: #fff;
+  color: #000;
+  padding: 10px 12px;
+  border-radius: 10px;
+  z-index: 9999;
+}
+.skip-link:focus { left: 10px; }
+
+/* ==========================================================================
+   🎩 CABEÇALHO (Header)
+   Fica fixo no topo com efeito de vidro fosco.
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Garante que fique acima de tudo */
+  backdrop-filter: blur(14px); /* O famoso efeito "Frosted Glass" */
+  background: rgba(11, 15, 20, .72);
+  border-bottom: 1px solid var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 14px;
+}
+
+/* Logo da barbearia */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(30,144,255,.25), rgba(57,198,255,.12));
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand__text small { color: var(--muted); }
+
+/* Menu de navegação */
+.nav {
+  display: flex;
+  gap: 18px;
+  color: rgba(255,255,255,.82);
+}
+
+.nav a {
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.nav a:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+
+/* ==========================================================================
+   🔘 BOTÕES (Buttons)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 11px 16px;
+  border-radius: 999px; /* Formato de pílula */
+
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+
+  font-weight: 700;
+  letter-spacing: .2px;
+  cursor: pointer;
+
+  user-select: none;
+  white-space: nowrap;
+
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+
+/* Efeito ao passar o mouse */
+.btn:hover {
+  transform: translateY(-1px); /* Sobe um pouquinho */
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+}
+
+/* Botão principal (Destaque) */
+.btn--primary {
+  border-color: rgba(30,144,255,.45);
+  background: linear-gradient(135deg, rgba(30,144,255,.92), rgba(57,198,255,.82));
+  color: #04111b; /* Texto escuro para contraste */
+}
+
+.btn--primary:hover {
+  border-color: rgba(57,198,255,.65);
+  background: linear-gradient(135deg, rgba(30,144,255,.98), rgba(57,198,255,.90));
+}
+
+/* Botão transparente */
+.btn--ghost {
+  background: transparent;
+}
+
+.btn--lg {
+  padding: 13px 18px;
+  font-size: 1rem;
+}
+
+/* Links de texto simples */
+.link {
+  display: inline-flex;
+  gap: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,.92);
+}
+.link:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   🔥 DESTAQUE PRINCIPAL (Hero Section)
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding: 70px 0 30px;
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr; /* Divide a tela: texto vs imagem */
+  gap: 26px;
+  align-items: center;
+}
+
+/* Aquele selo "Atendimento Rápido" */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+  width: fit-content;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+
+  color: rgba(255,255,255,.82);
+  font-weight: 600;
+}
+
+h1 {
+  margin: 14px 0 10px;
+  font-size: clamp(2.1rem, 4vw, 3.3rem); /* Fonte responsiva (cresce com a tela) */
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin: 0 0 16px;
+  max-width: 52ch; /* Limita a largura para leitura confortável */
+  color: rgba(255,255,255,.78);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 18px 0 16px;
+}
+
+.hero__meta {
+  list-style: none;
+  padding: 0;
+  margin:  0;
+  display: grid;
+  gap: 8px;
+  color: rgba(255,255,255,.82);
+}
+
+.hero__meta li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+/* Moldura da foto principal */
+.hero__media {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  box-shadow: var(--shadow);
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  filter: contrast(1.05) saturate(1.05); /* Deixa a foto mais vibrante */
+}
+
+/* O cartão flutuante em cima da foto */
+.hero__glass {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(11,15,20,.55);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+.hero__glass-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.25);
+}
+
+.hero__glass p { margin: 0; }
+.hero__glass small { color: rgba(255,255,255,.72); }
+
+/* Degradê no final da seção hero para suavizar a transição */
+.hero__fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 90px;
+  background: linear-gradient(180deg, transparent, rgba(11,15,20,.92));
+}
+
+/* ==========================================================================
+   🧩 SEÇÕES GERAIS
+   ========================================================================== */
+
+.section {
+  padding: 54px 0;
+}
+
+.section--soft {
+  background: rgba(255,255,255,.02); /* Fundo levemente mais claro */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.section__head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+.section__head p {
+  margin: 0;
+  max-width: 52ch;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+}
+
+/* ==========================================================================
+   💳 CARTÕES DE SERVIÇOS
+   ========================================================================== */
+
+.cards {
+  grid-template-columns: repeat(3, 1fr); /* 3 cartões por linha */
+}
+
+.card {
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  box-shadow: 0 14px 45px rgba(0,0,0,.18);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 0 10px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.74);
+}
+
+.card__foot {
+  margin-top: 10px;
+  color: rgba(255,255,255,.88);
+}
+
+/* O cartão "Destaque" (Urgência) */
+.card--highlight {
+  background: linear-gradient(135deg, rgba(30,144,255,.20), rgba(57,198,255,.10));
+  border-color: rgba(57,198,255,.22);
+}
+
+/* Lista de diferenciais (Features) */
+.features {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+.feature__icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+}
+
+.feature h3 { margin: 0 0 6px; }
+.feature p { margin: 0; line-height: 1.55; color: rgba(255,255,255,.74); }
+
+/* Faixa azul de "Chamada para Ação" */
+.cta-strip {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(57,198,255,.18);
+  background: linear-gradient(135deg, rgba(30,144,255,.16), rgba(255,255,255,.03));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cta-strip h3 { margin: 0 0 4px; }
+.cta-strip p { margin: 0; color: rgba(255,255,255,.75); }
+
+/* ==========================================================================
+   🖼️ GALERIA DE FOTOS
+   ========================================================================== */
+
+.gallery {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.shot {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 18px 55px rgba(0,0,0,.22);
+}
+
+.shot img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform var(--t-med) var(--ease);
+}
+
+/* Zoom suave na foto quando passa o mouse */
+.shot:hover img { transform: scale(1.04); }
+
+/* ==========================================================================
+   💬 DEPOIMENTOS
+   ========================================================================== */
+
+.testimonials {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.testi {
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+.testi__stars {
+  margin: 0 0 10px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  color: rgba(57,198,255,.95); /* Cor dourada/azul brilhante */
+}
+
+.testi p {
+  margin: 0 0 10px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+.testi__who { color: rgba(255,255,255,.90); }
+
+/* ==========================================================================
+   📍 MAPA E LOCALIZAÇÃO
+   ========================================================================== */
+
+.local {
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.panel {
+  padding: 16px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+.panel h3 { margin: 0 0 8px; }
+
+.panel p {
+  margin: 0 0 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+.panel__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.map {
+  overflow: hidden;
+  min-height: 340px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  box-shadow: var(--shadow);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  border: 0;
+}
+
+/* ==========================================================================
+   👇 RODAPÉ (Footer)
+   ========================================================================== */
+
+.footer {
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,.12);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: rgba(255,255,255,.82);
+}
+
+.muted { color: rgba(255,255,255,.62); }
+
+/* ==========================================================================
+   🟢 BOTÃO FLUTUANTE DO WHATSAPP
+   ========================================================================== */
+
+.wpp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60; /* Fica acima de tudo, inclusive do menu */
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(57,198,255,.25);
+  background: linear-gradient(135deg, rgba(30,144,255,.92), rgba(57,198,255,.82));
+  color: #04111b;
+
+  box-shadow: 0 18px 55px rgba(0,0,0,.38);
+  font-weight: 900;
+
+  transition: transform var(--t-fast) var(--ease);
+}
+
+.wpp-float:hover { transform: translateY(-1px); }
+.wpp-float__text { font-size: .95rem; }
+
+/* ==========================================================================
+   📱 RESPONSIVIDADE (Ajustes para Celular/Tablet)
+   Aqui garantimos que o site não quebre em telas menores.
+   ========================================================================== */
+
+/* Tablet e telas médias */
+@media (max-width: 980px) {
+  .hero__grid { grid-template-columns: 1fr; } /* Coloca um em cima do outro */
+  .hero__media { min-height: 360px; }
+
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+
+  .testimonials { grid-template-columns: 1fr; }
+  .local { grid-template-columns: 1fr; }
+
+  .nav { display: none; } /* Esconde o menu de links no tablet/celular */
+
+  .section__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 520px) {
+  .container {
+    width: min(var(--container), calc(100% - 28px)); /* Margem menor nas laterais */
+  }
+
+  .header__inner {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn { width: 100%; } /* Botões ocupam a largura toda para facilitar o toque */
+  .brand { flex: 1 1 auto; }
+
+  .hero { padding: 56px 0 22px; }
+
+  .cards,
+  .features,
+  .gallery {
+    grid-template-columns: 1fr; /* Tudo em uma coluna só */
+  }
+
+  .shot img { height: 200px; }
+
+  .cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-strip .btn { width: 100%; }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wpp-float__text { display: none; } /* Mostra só o ícone no celular para economizar espaço */
+}
+
+/* ==========================================================================
+   🛑 PREFERÊNCIA DE MOVIMENTO
+   Se o usuário desativou animações no sistema dele, respeitamos isso.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
