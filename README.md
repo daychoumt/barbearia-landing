@@ -1,89 +1,63 @@
-# 💈 Barbearia Landing Page — Template Freelancer
+# Barbearia Landing Page
 
-> Landing page profissional para barbearias com agendamento via WhatsApp. Pronta para usar e personalizar.
+Landing page responsiva para **barbearias e negócios locais**, criada com foco em apresentação profissional, conversão e contato rápido pelo WhatsApp.
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)
+[**Ver projeto online**](https://daychoumt.github.io/barbearia-landing)
 
----
+## Sobre o projeto
 
-## 🌐 Demo
+Este projeto foi desenvolvido como uma solução reutilizável para profissionais que precisam de uma presença digital simples, moderna e objetiva.
 
-🔗 **[https://daychoumt.github.io/barbearia-landing](https://daychoumt.github.io/barbearia-landing)**
+A página organiza os principais pontos de decisão de um cliente em uma única experiência: apresentação do negócio, serviços, diferenciais, galeria, avaliações, localização e chamada para agendamento.
 
----
+## Funcionalidades
 
-## 📋 Sobre o projeto
+- Agendamento e contato direto pelo WhatsApp.
+- Seção de serviços e apresentação dos diferenciais do negócio.
+- Galeria de imagens.
+- Área de depoimentos.
+- Localização com mapa incorporado.
+- Layout responsivo para celular, tablet e desktop.
+- Interface em tema escuro com foco em legibilidade e hierarquia visual.
+- Estrutura leve, sem dependência de frameworks.
 
-Template de landing page criado para **barbearias e serviços masculinos**, desenvolvido como produto freelancer. Design moderno, dark e focado em conversão — com botões de agendamento direto pelo WhatsApp em toda a página.
+## Tecnologias
 
-Ideal para barbearias que querem ter presença online profissional sem precisar de sistema complexo.
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Google Maps Embed**
+- **GitHub Pages**
 
----
+## Estrutura da página
 
-## ✨ Funcionalidades
+| Seção | Objetivo |
+| --- | --- |
+| Hero | Apresentar o negócio e direcionar para o agendamento |
+| Serviços | Exibir os serviços disponíveis |
+| Diferenciais | Reforçar os motivos para escolher o estabelecimento |
+| Galeria | Apresentar resultados e trabalhos realizados |
+| Depoimentos | Exibir avaliações e prova social |
+| Localização | Informar endereço, horário e facilitar o acesso |
 
-- 📲 **Agendamento via WhatsApp** — botão de contato em toda a página
-- ✂️ **Seção de serviços** — corte, barba, combo, sobrancelha e acabamento
-- 🖼️ **Galeria de fotos** — resultados reais dos cortes
-- ⭐ **Depoimentos** — avaliações de clientes
-- 📍 **Localização** — mapa integrado do Google Maps
-- 🌙 **Design dark** — visual moderno e elegante
-- 📱 **100% responsivo** — perfeito no celular e computador
-- ⚡ **Carregamento rápido** — sem frameworks, código limpo
+## Personalização
 
----
+A estrutura pode ser adaptada para diferentes clientes alterando:
 
-## 🗂️ Seções da página
+1. Nome e identidade visual.
+2. Número e mensagem padrão do WhatsApp.
+3. Serviços e preços.
+4. Imagens da galeria.
+5. Depoimentos.
+6. Endereço, horários e mapa.
+7. Cores e elementos de marca.
 
-| Seção | Descrição |
-|-------|-----------|
-| Hero | Chamada principal com CTA de agendamento |
-| Serviços | Cards com cada serviço disponível |
-| Diferenciais | Por que escolher esta barbearia |
-| Galeria | Fotos de cortes realizados |
-| Depoimentos | Avaliações de clientes |
-| Localização | Endereço, horários e mapa |
+## Objetivo
 
----
+O projeto foi criado como exemplo de entrega freelancer para demonstrar habilidades em **desenvolvimento front-end, responsividade, experiência do usuário e criação de páginas orientadas a conversão**.
 
-## 🛠️ Tecnologias
+## Autor
 
-| Tecnologia | Uso |
-|-----------|-----|
-| HTML5 | Estrutura da página |
-| CSS3 | Design dark, animações e responsividade |
-| JavaScript | Interatividade |
-| Google Maps Embed | Mapa de localização |
-| GitHub Pages | Hospedagem gratuita |
+Desenvolvido por **Thalys Daychoum**.
 
----
-
-## 🎨 Como personalizar
-
-1. Substitua o número do WhatsApp nos botões
-2. Troque as fotos da galeria pelas fotos reais da barbearia
-3. Atualize nome, endereço e horários
-4. Personalize as cores no CSS
-5. Adicione os depoimentos reais dos clientes
-
----
-
-## 💼 Uso freelancer
-
-Este projeto serve como **template base** para oferecer landing pages a barbearias e outros negócios locais. Rápido de personalizar e entregar ao cliente.
-
-**O que pode ser cobrado:**
-- Landing page completa
-- Configuração do WhatsApp
-- Hospedagem no domínio do cliente
-- Manutenção mensal
-
----
-
-## 👨‍💻 Desenvolvido por
-
-**Thalys Daychoum** — Desenvolvimento Web Freelancer
+[GitHub](https://github.com/daychoumt) · [LinkedIn](https://www.linkedin.com/in/thalys-daychoum/)
